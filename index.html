@@ -2,14 +2,61 @@
 <html>
     <head><title>Rock Paper Scissors</title></head>
     <script>
-        const selection = ["Rock", "Paper", "Scissors"];
-        let computerPlay = ()=>{
+        const selection = ["rock", "paper", "scissors"];
+        function computerPlay(){
             chooseRand = Math.floor(Math.random()*3) //chooses random number from 0 to 2
             let cpuChoice = selection[chooseRand];
             return cpuChoice
-        };
+        }
+        function playRound(playerSelection, computerSelection) {
+            switch(playerSelection.toLowerCase()){
+                case 'rock':
+                    switch(computerSelection.toLowerCase()){
+                        case 'rock':
+                            return("It's a draw");
+                            break;
+                        case 'scissors':
+                            return(winnerText(playerSelection, computerSelection));
+                            break;
+                        case 'paper':
+                            return(loserText(playerSelection, computerSelection));
+                            break;
+                    }
+                case 'paper':
+                    switch(computerSelection.toLowerCase()){
+                        case 'paper':
+                            return("It's a draw");
+                            break;
+                        case 'rock':
+                            return(winnerText(playerSelection, computerSelection));
+                            break;
+                        case 'scissors':
+                            return(loserText(playerSelection, computerSelection));
+                            break;
+                    }
+                case 'scissors':
+                    switch(computerSelection.toLowerCase()){
+                        case 'scissors':
+                            return("It's a draw");
+                            break;
+                        case 'paper':
+                            return(winnerText(playerSelection, computerSelection));
+                            break;
+                        case 'rock':
+                            return(loserText(playerSelection, computerSelection));
+                            break;
+                    }
+            }
+
+        }
+        function winnerText(playerSelection, computerSelection){
+            return("You win! "+ playerSelection +" beats " + computerSelection );
+        }
+        function loserText(playerSelection, computerSelection){
+            return("You Lose! "+ computerSelection +" beats " + playerSelection );
+        }
         
-        computerPlay();
+
     </script>
     <body>
         <p></p>
