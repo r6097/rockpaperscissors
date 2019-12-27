@@ -2,6 +2,14 @@
 <html>
     <head><title>Rock Paper Scissors</title></head>
     <script>
+        const selection = ["Rock", "Paper", "Scissors"];
+        let computerPlay = ()=>{
+            chooseRand = Math.floor(Math.random()*3) //chooses random number from 0 to 2
+            let cpuChoice = selection[chooseRand];
+            return cpuChoice
+        };
+        
+        computerPlay();
     </script>
     <body>
         <p></p>
