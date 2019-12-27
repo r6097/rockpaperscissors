@@ -11,7 +11,7 @@
         function playRound(playerSelection, computerSelection) {
             switch(playerSelection.toLowerCase()){
                 case 'rock':
-                    switch(computerSelection.toLowerCase()){
+                    switch(computerSelection){
                         case 'rock':
                             return("It's a draw");
                             break;
@@ -23,7 +23,7 @@
                             break;
                     }
                 case 'paper':
-                    switch(computerSelection.toLowerCase()){
+                    switch(computerSelection){
                         case 'paper':
                             return("It's a draw");
                             break;
@@ -35,7 +35,7 @@
                             break;
                     }
                 case 'scissors':
-                    switch(computerSelection.toLowerCase()){
+                    switch(computerSelection){
                         case 'scissors':
                             return("It's a draw");
                             break;
@@ -56,7 +56,17 @@
             return("You Lose! "+ computerSelection +" beats " + playerSelection );
         }
         
-
+        function game(){ // plays a game of 5 rounds or rock-paper-scissors
+            let i = 5
+            for(i; i>0; i--){
+                // will display popups
+                let playerSelection = prompt()
+                let computerSelection = computerPlay()
+                let gametext = playRound(playerSelection, computerSelection)
+                console.log(gametext)
+            }
+        }
+        game();
     </script>
     <body>
         <p></p>
