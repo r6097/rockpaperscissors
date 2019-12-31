@@ -1,5 +1,15 @@
 html{
   background-color: coral;
+  transition: background-color 0.5s;
+}
+.win{
+  background-color: mediumseagreen;
+}
+.lose{
+  background-color: brown;
+}
+.draw{
+  background-color: goldenrod;
 }
 h2{
   color: honeydew;
@@ -14,10 +24,10 @@ h3{
   color:honeydew;
 }
 .rightpanel{
-    float: right;
+  float: right;
 }
 .leftpanel{
-    float: left;
+  float: left;
 }
 .buttons{
   text-align: center;
@@ -35,4 +45,13 @@ h3{
   background-color: orangered;
   font-size: 28px;
   transform: rotate(360deg);
+}
+#refresh{
+  border: none;
+  background-color: orange;
+  color: rgb(228, 238, 234);
+  padding: 12px 30px;
+  position: absolute;
+  bottom: 0;
+  justify-content: center;
 }

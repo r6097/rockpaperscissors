@@ -1,17 +1,41 @@
+function bgWin() {
+  var bg = document.getElementById("bg");
+  bg.classList.toggle("win"); 
+} 
+function bgDraw() {
+  var bg = document.getElementById("bg");
+  bg.classList.toggle("draw");
+} 
+function bgLose() {
+  var bg = document.getElementById("bg");
+  bg.classList.toggle("lose");
+} 
 //to keep track of Scores
-let playerScore = 0;
-let cpuScore = 0;
+playerScore = 0;
+cpuScore = 0;
 document.getElementById('playerScore').innerHTML = playerScore;
 document.getElementById('cpuScore').innerHTML = cpuScore;
+
 function btnSelection(e) {
   let button = document.querySelector(`button[id="${this.id}"]`);
   let playerSelection = button.id;
   let gameText = playRound(playerSelection, computerPlay());
   document.getElementById('output').innerHTML = gameText;
+  document.getElementById('playerScore').innerHTML = playerScore;
+  document.getElementById('cpuScore').innerHTML = cpuScore;
+  if(playerScore >= 5){
+    window.alert("You Win!");
+    history.go(0);
+  }else if(cpuScore >= 5){
+    window.alert("\"You lose!\" ~Robert");
+    history.go(0);
+  }
 }
+
 // store array of buttons for event listener
 const buttons = Array.from(document.querySelectorAll('.button'));
 buttons.forEach(button => button.addEventListener('click', btnSelection));
+
 //array to for cpu to choose from randomly
 const selection = ["rock", "paper", "scissors"];
 //simulates computer player to play against user
@@ -63,11 +87,11 @@ function playRound(playerSelection, computerSelection) {
 }
 
 //text for win/lose rounds
-function winnerText(playerSelection, computerSelection, playerScore){
+function winnerText(playerSelection, computerSelection){
     playerScore++;
     return("You win! "+ playerSelection +" beats " + computerSelection );
 }
-function loserText(playerSelection, computerSelection, cpuScore){
+function loserText(playerSelection, computerSelection){
     cpuScore++;
     return("You Lose! "+ computerSelection +" beats " + playerSelection );
 }
