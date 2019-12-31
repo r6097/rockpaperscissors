@@ -1,10 +1,24 @@
+//to keep track of Scores
+let playerScore = 0;
+let cpuScore = 0;
+document.getElementById('playerScore').innerHTML = playerScore;
+document.getElementById('cpuScore').innerHTML = cpuScore;
+function btnSelection(e) {
+  let button = document.querySelector(`button[id="${this.id}"]`);
+  let playerSelection = button.id;
+  let gameText = playRound(playerSelection, computerPlay());
+  document.getElementById('output').innerHTML = gameText;
+}
+// store array of buttons for event listener
+const buttons = Array.from(document.querySelectorAll('.button'));
+buttons.forEach(button => button.addEventListener('click', btnSelection));
 //array to for cpu to choose from randomly
 const selection = ["rock", "paper", "scissors"];
 //simulates computer player to play against user
 function computerPlay(){
-    chooseRand = Math.floor(Math.random()*3) //chooses random number from 0 to 2
+    chooseRand = Math.floor(Math.random()*3); //chooses random number from 0 to 2
     let cpuChoice = selection[chooseRand];
-    return cpuChoice
+    return cpuChoice;
 }
 //the logic to determine who wins the round
 function playRound(playerSelection, computerSelection) {
@@ -49,10 +63,12 @@ function playRound(playerSelection, computerSelection) {
 }
 
 //text for win/lose rounds
-function winnerText(playerSelection, computerSelection){
+function winnerText(playerSelection, computerSelection, playerScore){
+    playerScore++;
     return("You win! "+ playerSelection +" beats " + computerSelection );
 }
-function loserText(playerSelection, computerSelection){
+function loserText(playerSelection, computerSelection, cpuScore){
+    cpuScore++;
     return("You Lose! "+ computerSelection +" beats " + playerSelection );
 }
 
