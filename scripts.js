@@ -1,9 +1,12 @@
+//array to for cpu to choose from randomly
 const selection = ["rock", "paper", "scissors"];
+//simulates computer player to play against user
 function computerPlay(){
     chooseRand = Math.floor(Math.random()*3) //chooses random number from 0 to 2
     let cpuChoice = selection[chooseRand];
     return cpuChoice
 }
+//the logic to determine who wins the round
 function playRound(playerSelection, computerSelection) {
     switch(playerSelection.toLowerCase()){
         case 'rock':
@@ -43,14 +46,16 @@ function playRound(playerSelection, computerSelection) {
                     break;
             }
     }
-
 }
+
+//text for win/lose rounds
 function winnerText(playerSelection, computerSelection){
     return("You win! "+ playerSelection +" beats " + computerSelection );
 }
 function loserText(playerSelection, computerSelection){
     return("You Lose! "+ computerSelection +" beats " + playerSelection );
 }
+
 /*
 function game(){ // plays a game of 5 rounds or rock-paper-scissors
     let i = 5

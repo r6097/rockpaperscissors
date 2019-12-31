@@ -1,0 +1,21 @@
+html{
+  background-color: coral;
+}
+h3{
+  color: honeydew;
+  display: flex;
+  justify-content: center;
+}
+
+.button{
+  border: none;
+  background-color: inherit;
+  transition: background-color 0.3s;
+  color: honeydew;
+  padding: 14px 28px;
+  font-size: 16px;
+  display: inline-block;
+}
+.button:hover{
+  background-color: orangered;
+}
