@@ -1,15 +1,13 @@
 function bgWin() {
-  var bg = document.getElementById("bg");
-  bg.classList.toggle("win"); 
+  document.getElementById("bg").style.backgroundColor = "mediumseagreen";
 } 
 function bgDraw() {
-  var bg = document.getElementById("bg");
-  bg.classList.toggle("draw");
+  document.getElementById("bg").style.backgroundColor = "coral";
 } 
 function bgLose() {
-  var bg = document.getElementById("bg");
-  bg.classList.toggle("lose");
-} 
+  document.getElementById("bg").style.backgroundColor = "brown";
+}
+
 //to keep track of Scores
 playerScore = 0;
 cpuScore = 0;
@@ -21,6 +19,7 @@ function btnSelection(e) {
   let playerSelection = button.id;
   let gameText = playRound(playerSelection, computerPlay());
   document.getElementById('output').innerHTML = gameText;
+  document.getElementById('output').classList.add('pulse')
   document.getElementById('playerScore').innerHTML = playerScore;
   document.getElementById('cpuScore').innerHTML = cpuScore;
   if(playerScore >= 5){
@@ -31,7 +30,6 @@ function btnSelection(e) {
     history.go(0);
   }
 }
-
 // store array of buttons for event listener
 const buttons = Array.from(document.querySelectorAll('.button'));
 buttons.forEach(button => button.addEventListener('click', btnSelection));
@@ -50,7 +48,7 @@ function playRound(playerSelection, computerSelection) {
         case 'rock':
             switch(computerSelection){
                 case 'rock':
-                    return("It's a draw");
+                    return(drawText());
                     break;
                 case 'scissors':
                     return(winnerText(playerSelection, computerSelection));
@@ -62,7 +60,7 @@ function playRound(playerSelection, computerSelection) {
         case 'paper':
             switch(computerSelection){
                 case 'paper':
-                    return("It's a draw");
+                    return(drawText());
                     break;
                 case 'rock':
                     return(winnerText(playerSelection, computerSelection));
@@ -74,7 +72,7 @@ function playRound(playerSelection, computerSelection) {
         case 'scissors':
             switch(computerSelection){
                 case 'scissors':
-                    return("It's a draw");
+                    return(drawText());
                     break;
                 case 'paper':
                     return(winnerText(playerSelection, computerSelection));
@@ -89,23 +87,15 @@ function playRound(playerSelection, computerSelection) {
 //text for win/lose rounds
 function winnerText(playerSelection, computerSelection){
     playerScore++;
+    bgWin();
     return("You win! "+ playerSelection +" beats " + computerSelection );
 }
 function loserText(playerSelection, computerSelection){
     cpuScore++;
+    bgLose();
     return("You Lose! "+ computerSelection +" beats " + playerSelection );
 }
-
-/*
-function game(){ // plays a game of 5 rounds or rock-paper-scissors
-    let i = 5
-    for(i; i>0; i--){
-        // will display popups
-        let playerSelection = prompt()
-        let computerSelection = computerPlay()
-        let gametext = playRound(playerSelection, computerSelection)
-        console.log(gametext)
-    }
+function drawText(){
+    bgDraw();
+    return("It's a draw!")
 }
-game();
-*/
